@@ -8,8 +8,8 @@ public class RandomArray {
         return randomNumbersArray;
     }
 
-    public static int[] getPart(int[] numbers, double start, double end) {
-        int[] result = new int[(int) (numbers.length * 0.25)];
+    public static int[] getPart(int[] numbers, double start, double end, int threadsAmount) {
+        int[] result = new int[(numbers.length / threadsAmount)];
         int indexNewArray = 0;
         for (int i = (int) (numbers.length * start); i < (int) (numbers.length * end); i++) {
             result[indexNewArray] = numbers[i];
