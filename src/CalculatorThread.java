@@ -1,13 +1,13 @@
 import java.math.BigInteger;
 
-public class SumCalculatorThread implements Runnable {
+public class CalculatorThread implements Runnable {
     private int[] numbers;
     private static BigInteger sum = new BigInteger("0");
 
-    public SumCalculatorThread() {
+    public CalculatorThread() {
     }
 
-    public SumCalculatorThread(int[] numbers) {
+    public CalculatorThread(int[] numbers) {
         this.numbers = numbers;
     }
 
@@ -24,7 +24,7 @@ public class SumCalculatorThread implements Runnable {
     }
 
     public void setSum(BigInteger sum) {
-        SumCalculatorThread.sum = sum;
+        CalculatorThread.sum = sum;
     }
 
     public void calculateSum(int[] numbers) {

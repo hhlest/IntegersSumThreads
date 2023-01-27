@@ -1,6 +1,6 @@
-public class Threads {
+public class ThreadDivider {
 
-    public Threads() {
+    public ThreadDivider() {
     }
 
     public static void createThreadsAndStartCalculation(int[] numbers) {
@@ -12,7 +12,7 @@ public class Threads {
         double endIndex = divider;
 
         for (int i = 0; i < t.length; i++) {
-            t[i] = new Thread(new SumCalculatorThread(RandomArray.getPart(numbers, startIndex, endIndex)));
+            t[i] = new Thread(new CalculatorThread(RandomArray.getPart(numbers, startIndex, endIndex)));
             startIndex += divider;
             endIndex += divider;
         }
@@ -28,7 +28,7 @@ public class Threads {
                 e.printStackTrace();
             }
         }
-        System.out.println("Sum = " + SumCalculatorThread.getSum());
+        System.out.println("Sum = " + CalculatorThread.getSum());
     }
 
 }
