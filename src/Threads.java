@@ -5,23 +5,28 @@ public class Threads {
 
     public static void createThreadsAndStartCalculation(int[] numbers) {
 
-        Thread th1 = new Thread(new SumCalculatorThread(RandomArray.getPart1(numbers)));
-        Thread th2 = new Thread(new SumCalculatorThread(RandomArray.getPart2(numbers)));
-        Thread th3 = new Thread(new SumCalculatorThread(RandomArray.getPart3(numbers)));
-        Thread th4 = new Thread(new SumCalculatorThread(RandomArray.getPart4(numbers)));
+        Thread[] t = new Thread[4];
+        double divider = 1.0 / t.length;
 
-        th1.start();
-        th2.start();
-        th3.start();
-        th4.start();
+        double startIndex = 0;
+        double endIndex = divider;
 
-        try {
-            th1.join();
-            th2.join();
-            th3.join();
-            th4.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for (int i = 0; i < t.length; i++) {
+            t[i] = new Thread(new SumCalculatorThread(RandomArray.getPart(numbers, startIndex, endIndex)));
+            startIndex += divider;
+            endIndex += divider;
+        }
+
+        for (Thread thread : t) {
+            thread.start();
+        }
+
+        for (Thread thread : t) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("Sum = " + SumCalculatorThread.getSum());
     }

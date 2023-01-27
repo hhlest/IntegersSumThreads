@@ -8,40 +8,10 @@ public class RandomArray {
         return randomNumbersArray;
     }
 
-    public static int[] getPart1(int[] numbers) {
-        int[] result = new int[numbers.length / 4];
+    public static int[] getPart(int[] numbers, double start, double end) {
+        int[] result = new int[(int) (numbers.length * 0.25)];
         int indexNewArray = 0;
-        for (int i = 0; i < numbers.length / 4; i++) {
-            result[indexNewArray] = numbers[i];
-            indexNewArray += 1;
-        }
-        return result;
-    }
-
-    public static int[] getPart2(int[] numbers) {
-        int[] result = new int[numbers.length / 2];
-        int indexNewArray = 0;
-        for (int i = numbers.length / 4; i < numbers.length / 2; i++) {
-            result[indexNewArray] = numbers[i];
-            indexNewArray += 1;
-        }
-        return result;
-    }
-
-    public static int[] getPart3(int[] numbers) {
-        int[] result = new int[(int) (numbers.length * 0.75)];
-        int indexNewArray = 0;
-        for (int i = numbers.length / 2; i < numbers.length * 0.75; i++) {
-            result[indexNewArray] = numbers[i];
-            indexNewArray += 1;
-        }
-        return result;
-    }
-
-    public static int[] getPart4(int[] numbers) {
-        int[] result = new int[numbers.length / 4];
-        int indexNewArray = 0;
-        for (int i = (int) (numbers.length * 0.75); i < numbers.length; i++) {
+        for (int i = (int) (numbers.length * start); i < (int) (numbers.length * end); i++) {
             result[indexNewArray] = numbers[i];
             indexNewArray += 1;
         }

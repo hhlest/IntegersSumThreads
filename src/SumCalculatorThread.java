@@ -1,6 +1,8 @@
+import java.math.BigInteger;
+
 public class SumCalculatorThread implements Runnable {
     private int[] numbers;
-    private static int sum = 0;
+    private static BigInteger sum = new BigInteger("0");
 
     public SumCalculatorThread() {
     }
@@ -17,17 +19,17 @@ public class SumCalculatorThread implements Runnable {
         this.numbers = numbers;
     }
 
-    public static int getSum() {
+    public static BigInteger getSum() {
         return sum;
     }
 
-    public void setSum(int sum) {
+    public void setSum(BigInteger sum) {
         SumCalculatorThread.sum = sum;
     }
 
     public void calculateSum(int[] numbers) {
         for (int i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
+            sum = sum.add(new BigInteger(String.valueOf(numbers[i])));
         }
     }
 
@@ -36,7 +38,7 @@ public class SumCalculatorThread implements Runnable {
         Thread th = Thread.currentThread();
         try {
             calculateSum(numbers);
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
